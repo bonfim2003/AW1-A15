@@ -2,14 +2,11 @@
 
 const keys = document.querySelectorAll('.key')
 
-// tocar notas//
-
 function playNote(event) {
   let audioKeyCode = getKeyCode(event)
 
   // tecla digitada ou pressionada
   const key = document.querySelector(`.key[data-key="${audioKeyCode}"]`)
-
   //se tecla existe
   const cantFoundAnyKey = !key
 
@@ -27,12 +24,13 @@ function addPlayingClass(key) {
 function getKeyCode(event) {
   let keyCode
 
-  const isKeyboard = event.type == 'keydown'
+  const isKeyboard = event.type === 'keydown'
   if (isKeyboard) {
     keyCode = event.keyCode
   } else {
     keyCode = event.target.dataset.key
   }
+
   return keyCode
 }
 
@@ -53,9 +51,11 @@ function registerEvents() {
     key.addEventListener('click', playNote)
     key.addEventListener('transitionend', removePlayingClass)
   })
+
   // digitar no teclado//
 
   window.addEventListener('keydown', playNote)
 }
 
 window.addEventListener('load', registerEvents)
+
