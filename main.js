@@ -17,7 +17,6 @@ function playNote(event) {
     return
   }
 
-  addPlayingClass(key)
   playAudio(audioKeyCode)
 }
 
